@@ -6,7 +6,7 @@
         <div class="container container-page">
             <div class="row">
                 <div class="col text-center">
-                    <h2>Editar Cliente</h2>
+                    <h2>Editar Animal</h2>
                 </div>
             </div>
             <div class="row">
