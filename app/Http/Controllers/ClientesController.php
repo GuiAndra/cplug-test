@@ -90,6 +90,6 @@ class ClientesController extends Controller
 
         $cliente->delete();
 
-        return redirect(route('clientes.index'));
+        return response()->json(['delete' => 'success']);
     }
 }

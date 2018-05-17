@@ -2,11 +2,11 @@
 
 @section('content')
 
-    <section id="animais">
+    <section id="clientes">
         <div class="container container-page">
             <div class="row">
                 <div class="col text-center">
-                    <h2>Clientes</h2>
+                    <h2>Editar Cliente</h2>
                 </div>
             </div>
             <div class="row">

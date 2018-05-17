@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <section id="animais">
+    <section id="clientes">
         <div class="container container-page">
             <div class="row">
                 <div class="col text-center">
@@ -32,7 +32,7 @@
                                 <td>
                                     <a href="{{ route('clientes.show', $cliente->id) }}" class="btn btn-outline-success">Exibir</a>
                                     <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-outline-warning">Editar</a>
-                                    <a href="{{ route('clientes.show', $cliente->id) }}" onclick="event.preventDefault(); deleteCliente({{ $cliente->id }});" class="btn btn-outline-danger">Excluir</a>
+                                    <a href="{{ route('clientes.show', $cliente->id) }}" class="btn btn-outline-danger delete" key="{{ $cliente->id }}">Excluir</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -47,15 +47,16 @@
 
 @section('scripts')
     <script>
-        function deleteCliente(id){
-            $.ajax({
-                type: 'DELETE',
-                url: 'clientes/' + id + '/destroy',
-                success: function(data) {
-                    alert('sucesso')
-                }
-            });
+      $('.delete').click(function (event){
+        event.preventDefault()
+        let el = $(this)
+        if(confirm('Deseja deletar o cliente?')){
+          axios.delete('clientes/' + el.attr('key')).then(function (response) {
+            if(response.data.delete === 'success'){
+              el.parent().parent().remove()
+            }
+          });
         }
+      });
     </script>
-
 @endsection

@@ -12,6 +12,6 @@ class Animais extends Model
 
     public function cliente()
     {
-        return $this->belongsTo('app\Clientes', 'dono_id');
+        return $this->belongsTo('App\Clientes', 'dono_id');
     }
 }

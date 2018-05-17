@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Animais;
+use App\Clientes;
 use Illuminate\Http\Request;
 
 class AnimaisController extends Controller
@@ -13,7 +15,7 @@ class AnimaisController extends Controller
      */
     public function index()
     {
-        return view('animais.index');
+        return view('animais.index')->with(['animais' => Animais::all()]);
     }
 
     /**
@@ -23,7 +25,7 @@ class AnimaisController extends Controller
      */
     public function create()
     {
-        //
+        return view('animais.create')->with(['clientes' => Clientes::all()]);
     }
 
     /**
@@ -34,7 +36,9 @@ class AnimaisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Animais::create($request->all());
+
+        return redirect(route('animais.index'));
     }
 
     /**
@@ -45,7 +49,7 @@ class AnimaisController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('animais.show')->with(['animal' => Animais::find($id)]);
     }
 
     /**
@@ -56,7 +60,7 @@ class AnimaisController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('animais.edit')->with(['animal' => Animais::find($id), 'clientes' => Clientes::all()]);
     }
 
     /**
@@ -68,7 +72,11 @@ class AnimaisController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $animal = Animais::find($id);
+
+        $animal->update($request->all());
+
+        return redirect(route('animais.index'));
     }
 
     /**
@@ -79,6 +87,10 @@ class AnimaisController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $animal = Animais::find($id);
+
+        $animal->delete();
+
+        return response()->json(['delete' => 'success']);
     }
 }
