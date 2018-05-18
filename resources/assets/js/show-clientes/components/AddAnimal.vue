@@ -2,13 +2,13 @@
 	<div>
 		<div class="container mt-4">
 			<div class="form-group">
-	            <input type="text" class="form-control" placeholder="Nome" v-model="form.nome">
+	            <input type="text" class="form-control" placeholder="Nome" required v-model="form.nome">
 	        </div>
 	        <div class="form-group">
-	            <input type="text" class="form-control" placeholder="Raça" v-model="form.raca">
+	            <input type="text" class="form-control" placeholder="Raça" required v-model="form.raca">
 	        </div>
 	        <div class="form-group">
-	            <input type="text" class="form-control" placeholder="Peso" v-model="form.peso">
+	            <input type="text" class="form-control" placeholder="Peso" required v-model="form.peso">
 	        </div>
 	        <button class="btn btn-success float-right" @click="adicionarAnimal">Adicionar</button>
 		</div>
@@ -29,7 +29,18 @@
 		},
 		methods: {
 			adicionarAnimal () {
-				this.$emit('AdicionarAnimal', this.form)
+				if(this.form.nome == ''){
+					alert('nome não pode ser vazio')
+				}
+				else if(this.form.raca == ''){
+					alert('raça não pode ser vazio')
+				}
+				else if(this.form.peso == ''){
+					alert('peso não pode ser vazio')
+				}
+				else{
+					this.$emit('AdicionarAnimal', this.form)
+				}
 			}
 		}
 	}
