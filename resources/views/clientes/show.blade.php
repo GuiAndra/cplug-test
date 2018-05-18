@@ -17,6 +17,10 @@
                     <p>Telefone: {{ $cliente->telefone }}</p>
                 </div>
                 <div class="col">
+                    <div id="app">
+                        <Container cliente_id="{{ $cliente->id }}"/>
+                    </div>
+                    {{-- 
                     <h4 class="text-center">Animais</h4>
                     <hr>
                     @foreach($cliente->animais as $animal)
@@ -24,10 +28,15 @@
                         <p>Raça: {{ $animal->raca }}</p>
                         <p>Peso: {{ $animal->peso }}</p>
                         <hr>
-                    @endforeach
+                    @endforeach 
+                    --}}
                 </div>
             </div>
         </div>
     </section>
 
+@endsection
+
+@section('scripts')
+    <script src="{{ url('js/show-clientes.js') }}"></script>
 @endsection

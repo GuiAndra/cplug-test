@@ -12,6 +12,7 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/bootstrap.js', 'public/js/bootstrap.js')
+mix.js('resources/assets/js/show-clientes/app.js', 'public/js/show-clientes.js')
    .sass('resources/assets/sass/app.scss', 'public/css')
    .extract(['vue'])
    .webpackConfig({ devtool: "inline-source-map" });
